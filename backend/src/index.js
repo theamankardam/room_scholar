@@ -1,17 +1,15 @@
 const express = require("express");
 const app = express();
-const db = require("./src/db/db.js");
+const db = require("./db/db.js");
 require("dotenv").config();
-const propertyRoutes = require("./src/routes/propertyRoutes.js");
+const propertyRoutes = require("./routes/propertyRoutes.js");
 const cors = require("cors");
 
 app.use(cors());
 app.use(express.json());
 
-// DB connect
-db();
 
-// routes
+db();
 app.use("/api/properties", propertyRoutes);
 
 
@@ -20,5 +18,5 @@ app.get("/", (req, res) => {
 });
 
 
-// ❌ NO app.listen here (IMPORTANT)
+
 module.exports = app;
