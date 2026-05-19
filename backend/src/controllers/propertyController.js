@@ -1,6 +1,6 @@
 const Property = require("../models/Property")
 
-// CREATE
+
  const createProperty = async (req, res) => {
     try {
         const property = await Property.create(req.body);
@@ -10,7 +10,6 @@ const Property = require("../models/Property")
     }
 };
 
-// GET ALL
  const getAllProperties = async (req, res) => {
     try {
         const properties = await Property.find();
@@ -20,7 +19,7 @@ const Property = require("../models/Property")
     }
 };
 
-// GET ONE
+
  const getPropertyById = async (req, res) => {
     try {
         const property = await Property.findById(req.params.id);
@@ -32,7 +31,7 @@ const Property = require("../models/Property")
     }
 };
 
-// UPDATE
+
  const updateProperty = async (req, res) => {
     try {
         const updated = await Property.findByIdAndUpdate(
@@ -49,7 +48,7 @@ const Property = require("../models/Property")
     }
 };
 
-// DELETE
+ // for deleting
 const deleteProperty = async (req, res) => {
     try {
         const deleted = await Property.findByIdAndDelete(req.params.id);
