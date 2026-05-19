@@ -21,15 +21,15 @@ i18n.use(initReactI18next).init({
         inLondon: "in London",
         description:
           "Handpicked student accommodation near top universities. Safe, comfortable and hassle-free living.",
-          
-          // Search bar
-          location: "Location",
-          moveIn: "Move In",
-          moveOut: "Move Out",
-          budgetPerWeek: "Budget (per week)",
-          search: "Search",
-          trustedByTopStudents: "Trusted by students from top universities",
-        },
+
+        // Search bar
+        location: "Location",
+        moveIn: "Move In",
+        moveOut: "Move Out",
+        budgetPerWeek: "Budget (per week)",
+        search: "Search",
+        trustedByTopStudents: "Trusted by students from top universities",
+      },
 
     },
 
