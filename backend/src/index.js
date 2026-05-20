@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const db = require("./db/db.js");
 require("dotenv").config();
+const authRoute = require("./routes/authRotue.js");
 const propertyRoutes = require("./routes/propertyRoutes.js");
 const cors = require("cors");
 
@@ -10,6 +11,7 @@ app.use(express.json());
 
 
 db();
+app.use("/api/auth", authRoute);
 app.use("/api/properties", propertyRoutes);
 
 
