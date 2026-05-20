@@ -1,19 +1,32 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const propertySchema = new mongoose.Schema(
   {
-    title: { type: String, required: true },
+    title: {
+      type: String,
+      required: true,
+    },
 
-    location: { type: String, required: true },
+    location: {
+      type: String,
+      required: true,
+    },
 
-    pricePerWeek: { type: Number, required: true },
+    pricePerWeek: {
+      type: Number,
+      required: true,
+    },
 
-    images: [{ type: String }],
+    images: [
+      {
+        type: String,
+      },
+    ],
 
     description: String,
 
     features: {
-      type: [String], // ["WiFi", "Gym", "Study Room"]
+      type: [String],
       default: [],
     },
 
@@ -26,10 +39,15 @@ const propertySchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+
+    status: {
+      type: String,
+      enum: ["active", "inactive"],
+      default: "active",
+    },
   },
   { timestamps: true }
 );
-
 
 const Property = mongoose.model("Property", propertySchema);
 

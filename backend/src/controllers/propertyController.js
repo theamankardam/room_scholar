@@ -1,16 +1,59 @@
 const Property = require("../models/Property")
+const cloudinary = require("../config/cloudinary");
+const streamifier = require("streamifier");
 
-
- const createProperty = async (req, res) => {
+const createProperty = async (req, res) => {
     try {
-        const property = await Property.create(req.body);
-        res.status(201).json(property);
+        let uploadedImages = [];
+
+        if (req.files && req.files.length > 0) {
+            for (const file of req.files) {
+                const result = await new Promise(
+                    (resolve, reject) => {
+                        const stream =
+                            cloudinary.uploader.upload_stream(
+                                {
+                                    folder: "properties",
+                                },
+                                (error, result) => {
+                                    if (error) reject(error);
+                                    else resolve(result);
+                                }
+                            );
+
+                        streamifier
+                            .createReadStream(file.buffer)
+                            .pipe(stream);
+                    }
+                );
+
+                uploadedImages.push(result.secure_url);
+            }
+        }
+
+        const property = await Property.create({
+            ...req.body,
+
+            images: uploadedImages,
+        });
+
+        res.status(201).json({
+            success: true,
+            property,
+        });
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(500).json({
+            success: false,
+            message: err.message,
+        });
     }
 };
 
- const getAllProperties = async (req, res) => {
+module.exports = {
+    createProperty,
+};
+
+const getAllProperties = async (req, res) => {
     try {
         const properties = await Property.find();
         res.json(properties);
@@ -20,19 +63,34 @@ const Property = require("../models/Property")
 };
 
 
- const getPropertyById = async (req, res) => {
+const getPropertyByStatus = async (req, res) => {
     try {
-        const property = await Property.findById(req.params.id);
-        if (!property) return res.status(404).json({ message: "Not found" });
+        const { status } = req.params;
 
-        res.json(property);
+        if (!["active", "inactive"].includes(status)) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid status",
+            });
+        }
+
+        const properties = await Property.find({ status });
+
+        res.status(200).json({
+            success: true,
+            count: properties.length,
+            properties,
+        });
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(500).json({
+            success: false,
+            message: err.message,
+        });
     }
 };
 
 
- const updateProperty = async (req, res) => {
+const updateProperty = async (req, res) => {
     try {
         const updated = await Property.findByIdAndUpdate(
             req.params.id,
@@ -48,7 +106,7 @@ const Property = require("../models/Property")
     }
 };
 
- // for deleting
+// for deleting
 const deleteProperty = async (req, res) => {
     try {
         const deleted = await Property.findByIdAndDelete(req.params.id);
@@ -62,4 +120,4 @@ const deleteProperty = async (req, res) => {
 };
 
 
-module.exports = { createProperty, getAllProperties, getPropertyById, updateProperty, deleteProperty }
+module.exports = { createProperty, getAllProperties, getPropertyByStatus, updateProperty, deleteProperty }

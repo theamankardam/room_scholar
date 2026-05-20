@@ -48,17 +48,11 @@ export default function Signup() {
   };
 
   return (
-    <section className="min-h-screen bg-white flex items-center justify-center px-4 py-10">
-      <div className="w-full max-w-md bg-white border border-gray-200 shadow-2xl rounded-3xl p-6 sm:p-8 transition-all duration-300">
+    <section className=" bg-white flex items-center justify-center px-4 py-20">
+      <div className="w-full max-w-md bg-white border border-gray-400 shadow-2xl rounded-3xl p-6 sm:p-8 transition-all duration-300">
         
         {/* Logo */}
-        <div className="flex flex-col items-center mb-8 text-center">
-          <Logo textSize="text-3xl sm:text-4xl" color="text-gray-900" />
-
-          <p className="text-gray-500 text-sm mt-2">
-             Create and manage admin accounts 👨‍💼🔐
-          </p>
-        </div>
+        
 
         {/* Form */}
         <form onSubmit={handleSignup} className="flex flex-col gap-4">
@@ -143,7 +137,7 @@ export default function Signup() {
             {isPending ? (
               <span className="loading loading-bars loading-md"></span>
             ) : (
-              "Sign Up"
+              "Create New Admin"
             )}
           </button>
         </form>

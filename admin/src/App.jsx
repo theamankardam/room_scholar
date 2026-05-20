@@ -7,9 +7,9 @@ import Signup from "./pages/Signup";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import Applayout from "./Applayout";
-import MyCalender from "./pages/MyCalender";
-import MarketPlace from "./pages/MarketPlace";
-import Notification from "./pages/Notification";
+import PropertyListing from "./pages/PropertyListing";
+import Bookings from "./pages/Bookings";
+import User from "./pages/User";
 import PageNotFound from "./pages/PageNotFound";
 
 export default function App() {
@@ -18,7 +18,6 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
 
           <Route
             path="/"
@@ -28,10 +27,11 @@ export default function App() {
               </ProtectedRoute>
             }
           >
-            <Route index element={<Navigate replace to="myCalender" />} />
-            <Route path="myCalender" element={<MyCalender />} />
-            <Route path="marketPlace" element={<MarketPlace />} />
-            <Route path="notification" element={<Notification />} />
+            <Route index element={<Navigate replace to="propertyListing" />} />
+            <Route path="propertyListing" element={<PropertyListing />} />
+            <Route path="bookings" element={<Bookings />} />
+            <Route path="user" element={<User />} />
+            <Route path="/signup" element={<Signup />} />
           </Route>
           <Route path="*" element={<PageNotFound />} />
         </Routes>

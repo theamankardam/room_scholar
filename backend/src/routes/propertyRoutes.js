@@ -1,15 +1,19 @@
 const router = require("express").Router();
 const { createProperty,
     getAllProperties,
-    getPropertyById,
+    getPropertyByStatus,
     updateProperty,
     deleteProperty, } = require('../controllers/propertyController.js')
 
 
+router.post(
+  "/",
+  upload.array("images", 5),
+  createProperty
+);
 
-router.post("/", createProperty);
 router.get("/", getAllProperties);
-router.get("/:id", getPropertyById);
+router.get("/status/:status", getPropertyByStatus);
 router.put("/:id", updateProperty);
 router.delete("/:id", deleteProperty);
 
