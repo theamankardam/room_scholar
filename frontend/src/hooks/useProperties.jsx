@@ -9,7 +9,7 @@ export const useProperties = () => {
     try {
       setLoading(true);
 
-      const res = await fetch("http://localhost:5000/api/properties");
+      const res = await fetch("https://room-scholar-5fkw.vercel.app/api/properties/");
 
       if (!res.ok) {
         throw new Error("Failed to fetch properties");
