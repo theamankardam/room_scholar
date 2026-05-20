@@ -1,5 +1,38 @@
 import { FiSearch } from "react-icons/fi";
 import { useTranslation } from "react-i18next";
+import Btn from "./Btn";
+
+
+export default function SearchBox() {
+  const { t } = useTranslation();
+  return (
+    <>
+      <div className="absolute left-1/2 -translate-x-1/2 bottom-[-45]  md:bottom-[13]  w-[90%] z-20 md:px-5 lg:px-2 xl:pl-0 xl:pr-40 2xl:px-02xl:pr-50">
+        <div className="flex items-center gap-3 bg-gray-50 border border-gray-200 rounded-2xl px-4 py-3 focus-within:border-orange-400 focus-within:ring-4 focus-within:ring-orange-100 transition-all duration-300 shadow-sm">
+          {/* Search Icon */}
+          <FiSearch className="text-2xl text-orange-500" />
+
+          {/* Input */}
+          <input
+            type="text"
+            placeholder="Search properties, cities, universities..."
+            className="w-full bg-transparent outline-none text-gray-700 placeholder:text-gray-400 text-[15px]"
+          />
+
+          {/* Button */}
+          <Btn className="bg-orange-500 hover:bg-orange-600 transition-all duration-300 text-white px-4 py-2 text-sm rounded-xl font-semibold shadow-md hover:shadow-lg">
+            {t("search")}
+          </Btn>
+        </div>
+      </div>
+    </>
+  );
+}
+
+/*
+
+import { FiSearch } from "react-icons/fi";
+import { useTranslation } from "react-i18next";
 import Location from "./Location";
 import Move from "./Move";
 import Btn from "./Btn";
@@ -30,3 +63,7 @@ export default function SearchBox() {
     </>
   );
 }
+
+
+
+*/

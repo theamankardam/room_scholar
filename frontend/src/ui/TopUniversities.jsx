@@ -4,7 +4,7 @@ import University from "./University";
 export default function TopUniversities() {
   const { t } = useTranslation();
   return (
-    <section className="px-4 md:px-8 lg:px-14 pt-45 sm:pt-1 md:pt-40 lg:pt-1  bg-[#f7f7fb]">
+    <section className="px-4 md:px-8 lg:px-14 pt-10    bg-[#f7f7fb]">
       <div className="text-center">
         <h2 className="text-2xl md:text-3xl font-semibold text-[#0B1B3B]">
           {t("trustedByTopStudents")}

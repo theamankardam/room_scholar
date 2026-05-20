@@ -5,9 +5,9 @@ import SearchBox from "./SearchBox";
 export default function HeroSection() {
   const { t } = useTranslation();
   return (
-    <section className="px-4 pt-4 bg-[#f7f7fb] pb-32 md:pb-10 xl:pb-32">
+    <section className="px-4 pt-4 bg-[#f7f7fb] pb-3 md:pb-10">
       <div
-        className="relative h-137.5 rounded-3xl overflow-visible bg-cover bg-center px-6 pt-8"
+        className="relative h-110 md:h-120 xl:h-137.5 rounded-3xl overflow-visible bg-cover bg-center px-6 pt-8"
         style={{
           backgroundImage: "url('/hero-img.jpg')",
         }}
@@ -19,13 +19,13 @@ export default function HeroSection() {
             {t("trustedBy")}
           </Btn>
 
-          <div className="mt-4 text-white text-4xl md:text-5xl xl:text-6xl font-semibold leading-tight">
+          <div className="mt-8 text-white text-4xl md:text-5xl xl:text-6xl font-semibold leading-tight">
             <p>{t("FindYourPerfect")}</p>
             <p className="text-orange-400">{t("StudentHome")}</p>
             <p>{t("inLondon")}</p>
           </div>
 
-          <p className="text-sm lg:text-md xl:text-lg mt-4 leading-5 text-gray-200 font-medium max-w-xl mb-3">
+          <p className="text-sm lg:text-md xl:text-lg mt-4 leading-5 text-gray-200 font-medium max-w-xl mb-5 sm:mb-8 md:mb-2">
             {t("description")}
           </p>
         </div>
