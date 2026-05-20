@@ -27,7 +27,8 @@ const signup = async (req, res) => {
         console.log(`SignUp Error: `, error); // remove this line after app done
         res.status(500).json({
             success: false,
-            error: "Internal Server Error"
+            error: err.message,
+
         });
     }
 }

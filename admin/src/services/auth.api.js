@@ -6,7 +6,11 @@ export const loginApi = async (data) => {
 };
 
 export const signupApi = async (data) => {
+    console.log(data);
+    
     const res = await axiosInstance.post("/api/auth/signup", data);
+    console.log(res.data);
+    
     return res.data;
 };
 

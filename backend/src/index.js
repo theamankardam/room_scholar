@@ -6,6 +6,15 @@ const authRoute = require("./routes/authRoute.js");
 const propertyRoutes = require("./routes/propertyRoutes.js");
 const cors = require("cors");
 
+
+
+
+
+
+
+
+
+
 app.use(cors());
 app.use(express.json());
 
